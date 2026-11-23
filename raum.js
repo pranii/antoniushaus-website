@@ -14,25 +14,27 @@ var MAX_P = 44;
 
 // unit: 'day' = pro Tag, 'person' = pro Person, 'flat' = pauschal
 var PACKAGES = [
-  { id:'flex', group:'Arbeiten & Vernetzen', name:'Coworking-Tagespass (Einzelplatz)', short:'Coworking Tagespass', price:25, unit:'person', layout:'cowork', persons:[1,12,1],
+  { id:'flex', group:'Tagsüber arbeiten', name:'Coworking-Tagespass (Einzelplatz)', short:'Coworking Tagespass', price:25, unit:'person', layout:'cowork', persons:[1,12,1],
     addons:['lunch'], word:'Coworking',
-    info:'Mo–Do, 9–17 Uhr. Kaffee, Wasser, WLAN inklusive. 10er-Karte 220 €, Monat 249 €.' },
-  { id:'cowork', group:'Arbeiten & Vernetzen', name:'Tech-Coworking „Denkraum Pro“', short:'Team-Raum exklusiv', price:350, half:220, unit:'day', layout:'banquet', persons:[2,44,10], days:true, halfday:true,
+    info:'Mo–Fr, 9–17 Uhr. Kaffee, Wasser, WLAN inklusive. 10er-Karte 220 €, Monat 249 €.' },
+  { id:'cowork', group:'Tagsüber arbeiten', name:'Tech-Coworking „Denkraum Pro“', short:'Team-Raum exklusiv', price:350, half:220, unit:'day', layout:'banquet', persons:[2,44,10], days:true, halfday:true,
     addons:['snack','lunch','extraScreen','clean'], word:'Team' },
-  { id:'brunch', group:'Arbeiten & Vernetzen', name:'Teambuilding Brunch', short:'Teambuilding Brunch', price:36, unit:'person', layout:'banquet', persons:[10,44,30], min:500, minLabel:'Mindestumsatz',
+  { id:'brunch', group:'Tagsüber arbeiten', name:'Teambuilding Brunch', short:'Teambuilding Brunch', price:36, unit:'person', layout:'banquet', persons:[10,44,30], min:500, minLabel:'Mindestumsatz',
     addons:['mic','drinks2','yoga'], word:'Brunch' },
-  { id:'kreativ', group:'Gestalten', name:'Atelier Plus: Kreativraum', short:'Atelier', price:240, unit:'day', layout:'atelier', persons:[2,20,8], days:true,
-    addons:['snack','vernissage','clean','lights'], word:'Atelier' },
-  { id:'foto', group:'Gestalten', name:'Atelier Plus: Fotostudio', short:'Fotostudio', price:290, half:170, unit:'day', layout:'studio', persons:[1,10,3], days:true, halfday:true,
-    addons:['snack','makeup','clean'], word:'Shooting' },
-  { id:'popup', group:'Gestalten', name:'Pop-up Event', short:'Pop-up Event', unit:'none', layout:'atelier', persons:[2,44,20],
+  { id:'vernissage', group:'Abends kuratiert', name:'Ausstellung & Vernissage', short:'Vernissage', price:150, unit:'flat', flatLabel:'Vernissage-Abend', layout:'standing', persons:[10,44,30],
+    addons:['sekt','drinks2','fingerfood','lights'], word:'Vernissage',
+    info:'Wir kuratieren: Schickt uns eure Mappe. Die Werke hängen mehrere Wochen.' },
+  { id:'popup', group:'Abends kuratiert', name:'Pop-up-Abend', short:'Pop-up-Abend', unit:'none', layout:'atelier', persons:[2,44,20],
     addons:[], word:'Pop-up' },
-  { id:'hochzeit', group:'Feiern', name:'Familienfeier', short:'Familienfeier', price:35, unit:'person', layout:'banquet', persons:[10,44,30], min:600, minLabel:'Mindestumsatz',
+  { id:'netzwerk', group:'Abends kuratiert', name:'Eigenes Netzwerk-Event', short:'Netzwerk-Abend', price:250, unit:'flat', flatLabel:'Abendmiete', min:600, minLabel:'Mindestumsatz Speisen & Getränke', layout:'standing', persons:[10,44,30],
+    addons:['fingerfood','drinks2','mic','extraScreen'], word:'Netzwerk' },
+  { id:'hochzeit', group:'Private Feiern', name:'Familienfeier', short:'Familienfeier', price:35, unit:'person', layout:'banquet', persons:[10,44,30], min:600, minLabel:'Mindestumsatz',
     addons:['sekt','mic','lights'], word:'Familie' },
-  { id:'freunde', group:'Feiern', name:'Treffen unter Freunden', short:'Treffen unter Freunden', price:29, unit:'person', layout:'banquet', persons:[10,44,30], min:600, minLabel:'Mindestumsatz',
+  { id:'freunde', group:'Private Feiern', name:'Treffen unter Freunden', short:'Treffen unter Freunden', price:29, unit:'person', layout:'banquet', persons:[10,44,30], min:600, minLabel:'Mindestumsatz',
     addons:['sekt','mic','lights'], word:'Freunde' },
-  { id:'anfrage', group:'Feiern', name:'Individuelle Anfrage', short:'Individuelle Anfrage', unit:'none', layout:'rows', persons:[1,44,20],
-    addons:[], word:'Ihr' }
+  { id:'anfrage', group:'Private Feiern', name:'Individuelle Anfrage', short:'Individuelle Anfrage', unit:'none', layout:'rows', persons:[1,44,20],
+    addons:[], word:'Ihr',
+    info:'Hochzeit, Fotoshooting oder Uni-Gruppe? Schreibt uns, wir schauen, ob es passt.' }
 ];
 
 // pop: Position im Raumbild in Prozent (x,y)
@@ -245,7 +247,7 @@ function buildPk(){
   html += '</div><div class="pk" style="margin-top:12px">';
   PACKAGES.forEach(function(p){
     if (p.group !== pkGroup) return;
-    var pr = p.unit === 'none' ? 'nach Absprache' : p.unit === 'person' ? eur(p.price) + ' p. P.' : (p.halfday ? 'ab ' + eur(p.half) : eur(p.price) + (p.unit === 'day' ? ' / Tag' : ' + Mindestumsatz'));
+    var pr = p.unit === 'none' ? 'nach Absprache' : p.unit === 'person' ? eur(p.price) + ' p. P.' : (p.halfday ? 'ab ' + eur(p.half) : eur(p.price) + (p.unit === 'day' ? ' / Tag' : (p.min ? ' + Mindestumsatz' : ' + Verzehr')));
     html += '<button data-id="' + p.id + '" class="' + (p.id === state.pk ? 'on' : '') + '"><b>' + p.short + '</b><span>' + pr + '</span></button>';
   });
   html += '</div>';
@@ -297,7 +299,7 @@ function calc(){
   if (p.unit === 'person'){ base = p.price * state.persons; L.push([p.name + ' · ' + state.persons + ' × ' + eur(p.price), base]); }
   else if (p.unit === 'day'){ var dp = state.half ? p.half : p.price; base = dp * days; L.push([p.name + (state.half ? ' · Halbtag' : ' · ' + days + (days > 1 ? ' Tage' : ' Tag')), base]); }
   else if (p.unit === 'roomperson'){ base = Math.min(p.roomMax, Math.max(p.roomMin, Math.round(p.rate * state.persons * 100) / 100)); L.push([p.name + ' · Raummiete ' + state.persons + ' × ' + eur(p.rate) + ' (min. ' + eur(p.roomMin) + ', max. ' + eur(p.roomMax) + ')', base]); }
-  else { base = p.price; L.push([p.name + ' · Abendmiete', base]); }
+  else { base = p.price; L.push([p.name + ' · ' + (p.flatLabel || 'Abendmiete'), base]); }
   sub += base;
   var food = (p.unit === 'person') ? base : 0;
   state.addons.forEach(function(k){
