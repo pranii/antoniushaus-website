@@ -16,7 +16,7 @@ var MAX_P = 44;
 var PACKAGES = [
   { id:'flex', group:'Arbeiten & Vernetzen', name:'Coworking-Tagespass (Einzelplatz)', short:'Coworking Tagespass', price:25, unit:'person', layout:'cowork', persons:[1,12,1],
     addons:['lunch'], word:'Coworking',
-    info:'Eigener Schreibtisch an offenen Coworking-Tagen (Mo–Do, 9–17 Uhr, außer an exklusiv gebuchten Tagen), inkl. Kaffee, Wasser und WLAN. 10er-Karte 220 €, Monatsmitgliedschaft 249 €.' },
+    info:'Mo–Do, 9–17 Uhr. Kaffee, Wasser, WLAN inklusive. 10er-Karte 220 €, Monat 249 €.' },
   { id:'cowork', group:'Arbeiten & Vernetzen', name:'Tech-Coworking „Denkraum Pro“', short:'Team-Raum exklusiv', price:350, half:220, unit:'day', layout:'banquet', persons:[2,44,10], days:true, halfday:true,
     addons:['snack','lunch','extraScreen','clean'], word:'Team' },
   { id:'brunch', group:'Arbeiten & Vernetzen', name:'Teambuilding Brunch', short:'Teambuilding Brunch', price:36, unit:'person', layout:'banquet', persons:[10,44,30], min:500, minLabel:'Mindestumsatz',
@@ -187,9 +187,9 @@ var hero = new Stage(document.getElementById('heroStage'));
 var heroIdx = 0, heroTimer = null;
 var bestStage = new Stage(document.getElementById('bestStage'));
 var BEST = {
-  banquet:  { name:'Bankett', info:'Zwei lange Tafeln. Gut für Hochzeiten, Dinner-Konzerte und Feiern, bis 44 Personen.' },
-  rows:     { name:'Reihen', info:'Stuhlreihen. Gut für Konzerte, Lesungen und Vorträge, bis 44 Personen.' },
-  standing: { name:'Stehempfang', info:'Stehtische im Raum für Empfänge und Vernissagen.' }
+  banquet:  { name:'Bankett', info:'Zwei lange Tafeln, bis 44 Personen.' },
+  rows:     { name:'Reihen', info:'Stuhlreihen für Konzerte und Vorträge, bis 44.' },
+  standing: { name:'Stehempfang', info:'Stehtische für Empfänge.' }
 };
 function showBest(k){
   var c = BEST[k];
