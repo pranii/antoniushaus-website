@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raumplaner · Eventraum · Kneitinger im Antoniushaus Regensburg</title>
+<meta name="description" content="Raumplaner für den Eventraum im Antoniushaus Regensburg: Paket, Personen und Extras wählen, Preis sehen und per WhatsApp anfragen. Mit Bestuhlung, Ausstattung, Anfahrt und FAQ.">
+
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/montserrat-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="rp">
+<a class="skip" href="#inhalt">Zum Inhalt springen</a>
+
+<header class="kopf">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="Kneitinger im Antoniushaus, zur Startseite"><img src="img/logo-antoniushaus.png" alt="Kneitinger im Antoniushaus" width="1283" height="282"></a>
+    <button class="menue-btn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <ul class="nav" id="nav">
+      <li><a href="index.html#vision">Vision</a></li>
+      <li><a href="index.html#werte">Werte</a></li>
+      <li><a href="speisekarte.html">Speisekarte</a></li>
+      <li><a href="eventraum.html">Eventraum</a></li>
+      <li><a href="raum.html" aria-current="page">Raumplaner</a></li>
+      <li><a href="index.html#newsletter">Newsletter</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+      <li class="cta"><a href="index.html#reservierung">Tisch reservieren</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="inhalt">
+
+  <!-- ================= KOPF mit animierter Raumskizze ================= -->
+  <section class="seitenkopf rp-kopf" id="top">
+    <div class="wrap">
+      <div>
+        <div class="kicker">Eventraum · Raumplaner</div>
+        <h1>Der Raum</h1>
+        <p class="lead">Der Raum liegt im 1. Obergeschoss des Antoniushauses, im selben Haus wie die Spielstätte des Staatstheaters Regensburg. Er hat einen begehbaren Balkon mit Blick ins Grüne, eine Küche im Haus und lässt sich schnell umbauen. Gebucht wird immer der ganze Raum.</p>
+        <div class="rp-modes" id="heroModes" aria-label="Beispiele ansehen"></div>
+        <div class="rp-knoepfe">
+          <a class="btn voll" href="#konfigurator">Paket zusammenstellen</a>
+          <a class="btn" href="eventraum.html">Fotos &amp; alle Pakete</a>
+        </div>
+      </div>
+      <div class="stage" id="heroStage"></div>
+    </div>
+  </section>
+
+  <!-- ================= KONFIGURATOR ================= -->
+  <section class="abschnitt" id="konfigurator">
+    <div class="wrap">
+      <div class="kopfzeile">
+        <div>
+          <div class="kicker">01 · Konfigurator</div>
+          <h2>Paket zusammen&shy;stellen</h2>
+        </div>
+        <p class="lead">Drei Schritte, am Ende steht der Preis. Die Angaben sind unverbindlich.</p>
+      </div>
+      <div class="cfg">
+        <div class="left">
+          <div class="stage" id="cfgStage"></div>
+          <p class="note">Die Skizze ist schematisch. <span class="todo">Echte Raummaße und Fotos ergänzen</span></p>
+        </div>
+        <div>
+          <div class="mini-stage"><div class="stage" id="miniStage"></div></div>
+
+          <div class="step">
+            <h3><span class="n">1</span>Was habt ihr vor?</h3>
+            <div id="pkList"></div>
+          </div>
+
+          <div class="step">
+            <h3><span class="n">2</span>Wie viele, wie lange?</h3>
+            <div id="qtyBox"></div>
+          </div>
+
+          <div class="step">
+            <h3><span class="n">3</span>Extras dazubuchen</h3>
+            <div class="addons" id="adList"></div>
+          </div>
+
+          <div class="sum dunkel" id="sum">
+            <div class="kicker">Eure Auswahl</div>
+            <div class="lines" id="lines"></div>
+            <div class="tot"><span>Gesamt</span><b id="total">0 €</b></div>
+            <small id="totNote">inkl. MwSt. · unverbindliche Schätzung, finales Angebot per Nachricht</small>
+            <div class="code"><input id="code" placeholder="Gutscheincode, z. B. ANTONIUS10" aria-label="Gutscheincode"><span class="ok" id="codeOk"></span></div>
+            <div class="sum-2">
+              <input id="datum" type="date" aria-label="Wunschdatum">
+              <input id="name" placeholder="Euer Name" aria-label="Name">
+            </div>
+            <button class="btn voll" id="send" type="button">Per WhatsApp anfragen</button>
+            <p class="klein rp-oder">oder <a href="tel:+4994160094669">0941 600 946 69</a> · <a id="mailLink" href="mailto:info@antoniushaus-kneitinger.de">E-Mail</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BESTUHLUNG ================= -->
+  <section class="abschnitt" id="bestuhlung">
+    <div class="wrap rp-zwei">
+      <div>
+        <div class="kicker">02 · Bestuhlung</div>
+        <h2>Bestuhlung</h2>
+        <p style="margin-top:24px">Wählt eine Aufstellung. Die Skizze zeigt sie sofort.</p>
+        <div class="tabs" role="group" aria-label="Bestuhlung wählen">
+          <button type="button" data-b="banquet" class="on" aria-pressed="true">Bankett</button>
+          <button type="button" data-b="rows" aria-pressed="false">Reihen</button>
+          <button type="button" data-b="standing" aria-pressed="false">Stehempfang</button>
+        </div>
+        <p id="bestInfo" class="note" style="margin-top:14px"></p>
+      </div>
+      <div>
+        <div class="stage" id="bestStage"></div>
+        <p class="note">Schematische Skizze. <span class="todo">Echte Raummaße ergänzen</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUSSTATTUNG ================= -->
+  <section class="abschnitt" id="ausstattung">
+    <div class="wrap rp-zwei">
+      <div>
+        <div class="kicker">03 · Ausstattung</div>
+        <h2>Ausstattung</h2>
+        <ul class="plain-list">
+          <li>WLAN</li>
+          <li>Display mit Videokonferenz</li>
+          <li>Seminartechnik</li>
+          <li>Kaffeemaschine im Nebenraum</li>
+          <li>Kühlgetränke</li>
+          <li>Flexible Tische &amp; Stühle</li>
+          <li>Begehbarer Balkon</li>
+          <li>Lichtanlage</li>
+          <li>Fotostudio-Set</li>
+        </ul>
+        <p class="note"><span class="todo">Noch offen, bitte prüfen: Beamer, Mikrofon, Tonanlage, Flipchart, Klimaanlage</span></p>
+      </div>
+      <div>
+        <div class="kicker">04 · Gut zu wissen</div>
+        <h2>Wichtig zu wissen</h2>
+        <ul class="plain-list einspaltig">
+          <li><b>Küche:</b> Bayerische Heimatküche vom Kneitinger im Haus</li>
+          <li><b>Barrierefreiheit:</b> Aufzug und barrierefreies WC vorhanden</li>
+          <li><b>Ruhezeiten:</b> In Absprache mit dem Theater, an Theaterabenden ruhige Formate</li>
+          <li><b>Auf- und Abbau:</b> 1 Tag</li>
+          <li><b>Eigene Deko:</b> ist erlaubt</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ANFAHRT ================= -->
+  <section class="abschnitt" id="anfahrt">
+    <div class="wrap rp-zwei">
+      <div>
+        <div class="kicker">05 · Anfahrt</div>
+        <h2>Anfahrt</h2>
+        <p style="margin-top:24px"><strong>Kneitinger im Antoniushaus</strong><br>Mühlweg 13 · 93053 Regensburg</p>
+        <ul class="plain-list einspaltig">
+          <li><b>Bus:</b> Linien 3 und 18 bis „Antoniuskirche“</li>
+          <li><b>Zu Fuß:</b> 10–15 Minuten vom Hauptbahnhof</li>
+          <li><b>Parken:</b> kostenlos an der Berufsschule, Alfons-Auer-Straße (ca. 300 m)</li>
+          <li><b>Fahrrad:</b> Stellplätze direkt am Gebäude</li>
+        </ul>
+        <p style="margin-top:1.2rem"><a href="https://www.google.com/maps/search/?api=1&amp;query=M%C3%BChlweg+13+93053+Regensburg" target="_blank" rel="noopener">In Google Maps öffnen</a></p>
+      </div>
+      <div id="mapBox" class="mapbox">
+        <div>
+          <h3 style="margin-bottom:12px">Karte von Google Maps</h3>
+          <p class="klein leise">Beim Laden stellt Google eine Verbindung zu eurem Gerät her. Die Karte wird erst geladen, wenn ihr auf den Knopf klickt.</p>
+          <button type="button" class="btn voll" id="mapLoad">Karte laden</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="abschnitt" id="faq">
+    <div class="wrap" style="max-width:900px">
+      <div class="kicker">06 · FAQ</div>
+      <h2 style="margin-bottom:28px">Häufige Fragen</h2>
+      <details><summary>Kann ich den Raum vorher anschauen?</summary><p>Ja, bei einer kostenlosen Besichtigung. Schreibt uns per WhatsApp einen Wunschtermin.</p></details>
+      <details><summary>Ist der Preis im Konfigurator verbindlich?</summary><p>Nein, er ist eine Schätzung. Ihr bekommt von uns ein finales Angebot per Nachricht.</p></details>
+      <details><summary>Wie viele Personen passen in den Raum?</summary><p>Sitzend bis zu 44 Gäste, an der Tafel, in Reihen oder an Einzeltischen.</p></details>
+      <details><summary>Gibt es eine Anzahlung, und wie storniere ich?</summary><p><span class="todo">Anzahlung und Stornofristen eintragen</span></p></details>
+      <details><summary>Dürfen wir laute Musik machen?</summary><p>Der Raum ist für ruhige, stimmungsvolle Formate gedacht, weil nebenan Theater gespielt wird. Akustikkonzerte und Live-Duos passen sehr gut.</p></details>
+      <details><summary>Sind die Preise inklusive MwSt.?</summary><p>Ja, alle Preise sind Endpreise inklusive MwSt. Firmen bekommen eine Rechnung mit ausgewiesener Steuer.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="wrap">
+    <div class="raster">
+      <div>
+        <img src="img/logo-antoniushaus-weiss.png" alt="Kneitinger im Antoniushaus" width="1283" height="282">
+        <p class="klein" style="max-width:24em;color:rgba(255,255,255,.75)">Bayerische Heimatküche und Eventraum im Antoniushaus. Im selben Haus wie das Staatstheater Regensburg.</p>
+      </div>
+      <div>
+        <h4>Besuch</h4>
+        <ul><li>Mühlweg 13</li><li>93053 Regensburg</li><li>Bus 3 und 18, Antoniuskirche</li></ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul><li><a href="tel:+4994160094669">0941 600 946 69</a></li><li><a href="https://wa.me/4994160094669" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:info@antoniushaus-kneitinger.de">info@antoniushaus-kneitinger.de</a></li></ul>
+      </div>
+      <div>
+        <h4>Entdecken</h4>
+        <ul><li><a href="speisekarte.html">Speisekarte</a></li><li><a href="eventraum.html">Eventraum</a></li><li><a href="raum.html">Raumplaner</a></li><li><a href="index.html#newsletter">Newsletter</a></li></ul>
+      </div>
+    </div>
+    <div class="unten">
+      <span>© Kneitinger im Antoniushaus · Antonius-Gastro-GmbH</span>
+      <span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script src="raum.js"></script>
+</body>
+</html>
